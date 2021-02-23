@@ -1,0 +1,42 @@
+1) CREATE DATABASE boutique;
+
+2) CREATE TABLE Manufacturers (
+  Code INTEGER,
+  Name VARCHAR(255) NOT NULL,
+  PRIMARY KEY (Code)   
+);
+
+3) CREATE TABLE Products (
+  Code INTEGER,
+  Name VARCHAR(255) NOT NULL ,
+  Price DECIMAL NOT NULL ,
+  Manufacturer INTEGER NOT NULL,
+  PRIMARY KEY (Code), 
+  FOREIGN KEY (Manufacturer) REFERENCES Manufacturers(Code)
+) ENGINE=INNODB;
+
+4) SELECT * FROM products;
+
+5) SELECT * FROM products WHERE Price <= 200;
+
+6) SELECT * FROM products WHERE Price BETWEEN 60 AND 120;
+
+7) SELECT Name, CONCAT(price*100,'%') FROM products;
+
+8) SELECT AVG(price) FROM products;
+
+9) SELECT AVG(Price) FROM products WHERE Code = 2.
+
+10) SELECT COUNT(*) FROM products WHERE price >= 180;
+
+11) SELECT Name, Price FROM products WHERE price >= 180 ORDER BY Name DESC, Price ASC;
+
+12) SELECT x.*, y.Name FROM products as x,manufacturers as y;
+
+13) SELECT products.Name, products.Price, manufacturers.Name as Manufacturer FROM products INNER JOIN manufacturers ON products.Code = manufacturers.Code;
+
+14) SELECT AVG(Price), Manufacturer FROM products GROUP BY Manufacturer
+
+15) SELECT x.Name , AVG(Price) FROM Manufacturers AS x INNER JOIN Products ON x.Code=Products.Manufacturer GROUP BY x.Name
+
+16) 
